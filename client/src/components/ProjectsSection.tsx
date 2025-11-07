@@ -2,49 +2,7 @@ import { ExternalLink, Github, TrendingUp } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const projects = [
-  {
-    title: " 🚗💨❄️ Car Rental Batch Data Ingestion with SCD2 Merge in Snowflake ❄️",
-    description:
-      "Implemented a batch data ingestion pipeline for car rental data, featuring SCD2 (Slowly Changing Dimension Type 2) merge on the customer dimension in Snowflake. The pipeline uses Python, PySpark, GCP Dataproc, Airflow, and Snowflake to ingest, transform, and automate scalable data workflows. Key features include SCD2 handling, ingestion from GCS to Snowflake, PySpark transformations, Airflow orchestration, and scalable processing via Dataproc.",
-    // impact: "SCD2 Merge",
-    // impactLabel: "Accurate Customer History",
-    tech: ["Python", "PySpark", "GCP Dataproc", "Airflow", "Snowflake"],
-    image: "/images/carpipeline.png",
-    gradient: "from-chart-2/10 to-chart-2/5",
-  },
-  {
-    title: "🔶 Databricks ETL Pipeline with Medallion Architecture 🔶",
-    description:
-      "I led a data processing project on Databricks using PySpark and DBT, applying the Medallion architecture (bronze, silver, gold layers). The goal was to build a modular, scalable ETL pipeline: ingesting raw data with PySpark streaming, transforming and cleaning it in the silver layer, and creating analytics-ready models with DBT in the gold layer. My main challenge was handling incremental data loads and ensuring reliability; I solved this by implementing checkpointing and dynamic schema handling. This resulted in a robust, production-quality pipeline that improved data quality and analytics efficiency.",
-    // impact: "85%",
-    // impactLabel: "Data Quality Improvement",
-    tech: ["PySpark", "DBT", "Databricks", "Python", "Delta Lake"],
-    image: "/images/pysprakxdbt.png",
-    gradient: "from-chart-1/10 to-chart-1/5",
-  }
-  // {
-  //   title: "ETL Automation Framework",
-  //   description:
-  //     "Developed an automated ETL framework with Apache Airflow that orchestrates 50+ daily data workflows, improving data quality by 85% and reducing manual effort by 60% through intelligent error handling and monitoring.",
-  //   impact: "60%",
-  //   impactLabel: "Less Manual Work",
-  //   tech: ["Airflow", "PostgreSQL", "Python", "Docker"],
-  //   image: "https://placehold.co/800x500/059669/ffffff?text=ETL+Framework",
-  //   gradient: "from-chart-2/10 to-chart-2/5",
-  // },
-  // {
-  //   title: "Customer Insights Dashboard",
-  //   description:
-  //     "Created an interactive dashboard using Power BI to visualize customer behavior patterns across 10+ metrics, enabling data-driven decisions that increased customer retention by 25% and reduced churn by 15%.",
-  //   impact: "25%",
-  //   impactLabel: "Better Retention",
-  //   tech: ["Power BI", "SQL", "Azure", "DAX"],
-  //   image: "https://placehold.co/800x500/9333ea/ffffff?text=Dashboard",
-  //   gradient: "from-chart-3/10 to-chart-3/5",
-  // }
-];
+import { projects } from "@/data/constants.js";
 
 export default function ProjectsSection() {
   return (
@@ -117,26 +75,9 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className="flex gap-3 pt-2">
-                  {index === 0 ? (
+                  {project.githubUrl ? (
                     <a
-                      href="https://github.com/Devcoding17/End-To-End-CAR-RENTAL-PIPELINE?tab=readme-ov-file"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                      data-testid={`button-github-${index}`}
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hover-elevate w-full"
-                      >
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
-                      </Button>
-                    </a>
-                  ) : index === 1 ? (
-                    <a
-                      href="https://github.com/Devcoding17/PYSPARK-DBT-PROJECT"
+                      href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1"
